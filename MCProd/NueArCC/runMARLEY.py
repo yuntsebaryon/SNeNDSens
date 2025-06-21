@@ -4,7 +4,7 @@ import os
 
 if __name__ == "__main__":
 
-    outDir = '/Users/yuntse/data/coherent/SNeNDSens/NueArCCdirt'
+    outDir = '/Users/yuntse/data/coherent/SNeNDSens/NueArCCdirt/marley'
     jsonDir = f'{outDir}/json'
     nFiles = 40
     nEvtsPerFile = 10000
