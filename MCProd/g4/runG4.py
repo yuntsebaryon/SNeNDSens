@@ -15,7 +15,7 @@ if __name__ == "__main__":
     sample = args.sample
     sampleConfig = { 'signal': {'label': 'NueArCC', 'prefix': 'nueArCC_sns_yDir', 'nFiles': 10, 'nEventsPerFile': 10000 },
                      'cosmic': {'label': 'Cosmics', 'prefix': 'CosmicFlux', 'nFiles': 4000, 'nEventsPerFile': 5000  },
-                     'BRN': { 'label': 'BRN', 'prefix': 'BRN', 'nFiles': 1, 'nEventsPerFile': 1 },
+                     'BRN': { 'label': 'BRN', 'prefix': 'BRN', 'nFiles': 50, 'nEventsPerFile': 10000 },
                      'dirt': { 'label': 'NueArCCdirt', 'prefix': 'nueArCC_sns_yDir', 'nFiles': 40, 'nEventsPerFile': 10000 },
                      'HOG': { 'label': 'HOG', 'prefix': 'HOG', 'nFiles': 1, 'nEventsPerFile': 1 } }
     
