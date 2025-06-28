@@ -20,3 +20,11 @@ SNeND Sensitivity
    cd /Users/yuntse/work/coherent/SNeNDSens/MCProd/g4
    python runG4.py --sample BRN --dir /Users/yuntse/data/coherent/SNeNDSens
 ```
+
+### Dump the edep-sim output to a h5 file
+
+```shell
+   source /Users/yuntse/opt/root-v6.36.00/bin/thisroot.sh
+   export LD_LIBRARY_PATH="/Users/yuntse/opt/edep-sim/edep-gcc-17.0.0-arm64-apple-darwin24.5.0/lib:/Users/yuntse/opt/root-v6.36.00/lib"
+   python dumpTree.py <input.root> <output.h5> True
+```
