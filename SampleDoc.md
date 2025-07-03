@@ -1,5 +1,5 @@
-Logbook on the SNeND Sensitivity
-================================
+Documentation of the Samples and the Detector
+=============================================
 
 ## MC sample generation: 2025.6.19
 
@@ -30,6 +30,7 @@ Logbook on the SNeND Sensitivity
 - LAr: a cylinder with the radius of 46cm and the height of 120cm
 - Pixel tiles 50x60cm$^2$ at the y-z plane, at x = 30cm and x = -30cm
 - Cathode at the middle, x = 0cm, y-z plane
+- GEANT4 geometry file at MCProd/g4/gdml/COHAr250.gdml
 
 ## Previous analysis
 
