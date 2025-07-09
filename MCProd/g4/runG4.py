@@ -43,6 +43,19 @@ if __name__ == "__main__":
         with open( macfile, 'w') as f:
             f.write(
 f'''
+/edep/phys/ionizationModel 0
+/edep/gdml/read {gdml}
+/edep/hitSagitta LArTPC 0.5 mm
+/edep/hitLength LArTPC 0.05 mm
+/edep/hitSeparation LArTPC -0.5 mm
+
+/edep/db/set/neutronThreshold 0 MeV
+/edep/db/set/lengthThreshold 0 mm
+/edep/db/set/gammaThreshold 0 MeV
+/edep/db/open {outfile}
+
+/edep/update
+
 /generator/kinematics/set hepevt
 
 /generator/kinematics/hepevt/input {infile}
@@ -56,9 +69,11 @@ f'''
 
 ## Make sure EDEPSIM updates the kinematics generator.
 /generator/add
+
+/run/beamOn {sampleConfig[sample]['nEventsPerFile']}
 '''
             )
         
-        cmd = f'{executable} -u -e {sampleConfig[sample]['nEventsPerFile']} -o {outfile} -g {gdml} {macfile}'
+        cmd = f'{executable} {macfile}'
         print( cmd )
         os.system( cmd )
