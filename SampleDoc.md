@@ -32,6 +32,13 @@ Documentation of the Samples and the Detector
 - Cathode at the middle, x = 0cm, y-z plane
 - GEANT4 geometry file at MCProd/g4/gdml/COHAr250.gdml
 
+## GEANT4 simulation: 2025.7.9
+
+- Use `edep-sim` GEANT4 wrapper.  Use `cv1.0` at my fork of Clark's `edep-sim`:
+  [https://github.com/yuntsebaryon/edep-sim](https://github.com/yuntsebaryon/edep-sim)
+    - `c` stands for `COHERENT`.
+
+
 ## Previous analysis
 
 - Analysis done in early 2024: only at the GEANT4 level, visually determined

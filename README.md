@@ -45,6 +45,11 @@ May try to disable the `BUILD_CAPTAIN` with the flag below (TPC): \
 
 ### Compile edep-sim
 
+Use `cv1.0` at my fork of Clark's `edep-sim`:
+[https://github.com/yuntsebaryon/edep-sim](https://github.com/yuntsebaryon/edep-sim)
+
+`c` stands for `COHERENT`.
+
 ```shell
    source /Users/yuntse/opt/root-v6.36.00/bin/thisroot.sh
    source /Users/yuntse/opt/geant4-v10.7.4/bin/geant4.sh
