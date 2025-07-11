@@ -14,7 +14,7 @@ if __name__ == "__main__":
 
     sample = args.sample
     sampleConfig = { 'signal': {'label': 'NueArCC', 'prefix': 'nueArCC_sns_yDir', 'nFiles': 10, 'nEventsPerFile': 10000 },
-                     'cosmic': {'label': 'Cosmics', 'prefix': 'CosmicFlux', 'nFiles': 4000, 'nEventsPerFile': 5000  },
+                     'cosmic': {'label': 'Cosmics', 'prefix': 'CosmicFlux', 'nFiles': 200, 'nEventsPerFile': 100000  },
                      'BRN': { 'label': 'BRN', 'prefix': 'BRN', 'nFiles': 50, 'nEventsPerFile': 10000 },
                      'dirt': { 'label': 'NueArCCdirt', 'prefix': 'nueArCC_sns_yDir', 'nFiles': 40, 'nEventsPerFile': 10000 },
                      'HOG': { 'label': 'HOG', 'prefix': 'HOG', 'nFiles': 1, 'nEventsPerFile': 1 } }
@@ -45,14 +45,19 @@ if __name__ == "__main__":
 f'''
 /edep/phys/ionizationModel 0
 /edep/gdml/read {gdml}
-/edep/hitSagitta LArTPC 0.5 mm
-/edep/hitLength LArTPC 0.05 mm
-/edep/hitSeparation LArTPC -0.5 mm
 
 /edep/db/set/neutronThreshold 0 MeV
 /edep/db/set/lengthThreshold 0 mm
 /edep/db/set/gammaThreshold 0 MeV
 /edep/db/open {outfile}
+
+/edep/hitSeparation LArTPC -1 mm
+/edep/hitSeparation CRTtop -1 mm
+/edep/hitSeparation CRTbottom -1 mm
+/edep/hitSeparation CRTfront -1 mm
+/edep/hitSeparation CRTback -1 mm
+/edep/hitSeparation CRTright -1 mm
+/edep/hitSeparation CRTleft -1 mm
 
 /edep/update
 
