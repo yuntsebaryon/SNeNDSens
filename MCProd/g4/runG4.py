@@ -21,7 +21,8 @@ if __name__ == "__main__":
     
     gdml = '/Users/yuntse/work/coherent/SNeNDSens/MCProd/g4/gdml/COHAr250.gdml'
     
-    executable = '/Users/yuntse/opt/edep-sim/edep-gcc-17.0.0-arm64-apple-darwin24.5.0/bin/edep-sim'
+    # executable = '/Users/yuntse/opt/edep-sim/edep-gcc-17.0.0-arm64-apple-darwin24.5.0/bin/edep-sim'
+    executable = '/Users/yuntse/opt/edep-sim-origin/edep-gcc-17.0.0-arm64-apple-darwin24.5.0/bin/edep-sim'
 
     inDir = f'{args.dir}/gen/{sampleConfig[sample]['label']}'
     if not os.path.isdir( inDir ):
@@ -50,6 +51,10 @@ f'''
 /edep/db/set/lengthThreshold 0 mm
 /edep/db/set/gammaThreshold 0 MeV
 /edep/db/open {outfile}
+# /edep/db/set/storeROOT true
+
+/edep/hitSagitta LArTPC 1.0 mm
+/edep/hitLength LArTPC 1.0 mm
 
 /edep/hitSeparation LArTPC -1 mm
 /edep/hitSeparation CRTtop -1 mm
