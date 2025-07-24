@@ -45,10 +45,15 @@ May try to disable the `BUILD_CAPTAIN` with the flag below (TPC): \
 
 ### Compile edep-sim
 
-Use `cv1.0` at my fork of Clark's `edep-sim`:
+Use `cv2.0` at my fork of Kazu's `edep-sim`:
 [https://github.com/yuntsebaryon/edep-sim](https://github.com/yuntsebaryon/edep-sim)
 
 `c` stands for `COHERENT`.
+
+export HDF5_ROOT=/Users/yuntse/opt/hdf5
+export PATH=$HDF5_ROOT/bin:$PATH
+export LD_LIBRARY_PATH=$HDF5_ROOT/lib:$LD_LIBRARY_PATH     # For Linux
+export DYLD_LIBRARY_PATH=$HDF5_ROOT/lib:$DYLD_LIBRARY_PATH # For macOS
 
 ```shell
    source /Users/yuntse/opt/root-v6.36.00/bin/thisroot.sh
@@ -62,3 +67,4 @@ Use `cv1.0` at my fork of Clark's `edep-sim`:
    make doc
    make install
 ```
+

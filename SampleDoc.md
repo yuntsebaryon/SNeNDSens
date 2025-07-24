@@ -7,10 +7,14 @@ Documentation of the Samples and the Detector
     - 10000 events/file, 10 files
 - NueAr CC dirt: 4e5 events
     - 10000 events/file, 40 files
-- Cosmic muons: 2e7 events, sampling a 6x6 $m^2$ area, event duration of 200µs, 
-  ending up with 1 cosmic muon per event
+- Cosmic muons: 2e7 events, 
+    - sampling a 6x6 $m^2$ area at z = +7m, 
+    - event duration of 284µs (-30000.0, 215821.0422812193)ns, 
+    - ending up with 1 cosmic muon per event
     - 100000 events/file, 200 files
-- Beam related neutrons (BRN): 5e5 events
+- Beam related neutrons (BRN): 5e5 events, 
+    - sampling among x = (-50, 50)cm, y = -54cm, z = (-60, 60)cm, 
+    - t = 0ns
     - 10000 events/file, 50 files
 
 ## Scale the event rate: Want to revisit
