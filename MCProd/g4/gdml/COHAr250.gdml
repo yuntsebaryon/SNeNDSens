@@ -34,10 +34,6 @@
       <auxiliary auxtype="SensDet" auxvalue="LArTPC"/>
       <auxiliary auxtype="EField" auxvalue="(500.0 V/cm, 0.0 V/cm, 0.0 V/cm)"/>
     </volume>
-    <volume name="LArCryo">
-      <materialref ref="LAr"/>
-      <solidref ref="LArTube"/>
-    </volume>
     <volume name="Overburden">
       <materialref ref="G4_CONCRETE"/>
       <solidref ref="OverburdenBlock"/>
@@ -84,16 +80,20 @@
       <solidref ref="CRTx"/>
       <auxiliary auxtype="SensDet" auxvalue="CRTleft"/>
     </volume>
+    <volume name="LArCryo">
+      <materialref ref="LAr"/>
+      <solidref ref="LArTube"/>
+      <physvol copynumber="0">
+        <volumeref ref="LArTPC"/>
+        <positionref ref="origin"/>
+        <rotationref ref="identity"/>
+      </physvol>
+    </volume>
     <volume name="World">
       <materialref ref="G4_Galactic"/>
       <solidref ref="WorldBox"/>
       <physvol copynumber="0">
         <volumeref ref="LArCryo"/>
-        <positionref ref="origin"/>
-        <rotationref ref="identity"/>
-      </physvol>
-      <physvol copynumber="0">
-        <volumeref ref="LArTPC"/>
         <positionref ref="origin"/>
         <rotationref ref="identity"/>
       </physvol>
