@@ -4,7 +4,7 @@ import os
 
 if __name__ == "__main__":
 
-    outDir = '/Users/yuntse/data/coherent/SNeNDSens/NueArCCdirt/marley'
+    outDir = '/Users/yuntse/data/coherent/SNeNDSens/gen/NueArCCdirt/marley'
     jsonDir = f'{outDir}/json'
     nFiles = 40
     nEvtsPerFile = 10000
@@ -14,13 +14,13 @@ if __name__ == "__main__":
     for iFile in range( nFiles ):
 
         seed = np.random.randint(0, 2**32, dtype = np.uint32)
-        jsonF = f'{jsonDir}/nueArCC_sns_yDir_{iFile:02d}.js'
+        jsonF = f'{jsonDir}/nueArCC_sns_{iFile:04d}.js'
         with open( jsonF, 'w') as f:
             f.write(
 f'''
 {{
   seed: {seed},
-  direction: {{ x: 0.0, y: 1.0, z: 0.0 }},
+  direction: {{ x: 0.0, y: 1.0, z: -0.24 }},
   target: {{
     nuclides: [ 1000180400 ],
     atom_fractions: [ 1.0 ],
@@ -32,7 +32,7 @@ f'''
   }},
   executable_settings: {{
     events: {nEvtsPerFile}, 
-    output: [ {{ file: "{outDir}/nueArCC_sns_yDir_{iFile:02d}.hepevt", format: "hepevt", mode: "overwrite" }} ],
+    output: [ {{ file: "{outDir}/nueArCC_sns_{iFile:04d}.hepevt", format: "hepevt", mode: "overwrite" }} ],
   }},
 }}
 '''
