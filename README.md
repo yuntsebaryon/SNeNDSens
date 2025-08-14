@@ -9,6 +9,18 @@ SNeND Sensitivity
 
 ## Environment setups
 
+### MARLEY
+
+Run MARLEY in the marley build directory,
+
+```shell
+   cd source/marley/
+   source setup_marley.sh
+   cd build
+   python /Users/yuntse/work/coherent/SNeNDSens/MCProd/gen/NueArCC/runMARLEY.py
+```
+
+
 ### Edep-sim
 
 ```shell
