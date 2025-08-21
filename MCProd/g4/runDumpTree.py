@@ -14,10 +14,10 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     sample = args.sample
-    sampleConfig = { 'signal': {'label': 'NueArCC', 'prefix': 'nueArCC_sns_yDir', 'nFiles': 10, 'nEventsPerFile': 10000 },
+    sampleConfig = { 'signal': {'label': 'NueArCC', 'prefix': 'nueArCC_sns', 'nFiles': 10, 'nEventsPerFile': 10000 },
                      'cosmic': {'label': 'Cosmics', 'prefix': 'CosmicFlux', 'nFiles': 200, 'nEventsPerFile': 100000 },
                      'BRN': { 'label': 'BRN', 'prefix': 'BRN', 'nFiles': 50, 'nEventsPerFile': 10000 },
-                     'dirt': { 'label': 'NueArCCdirt', 'prefix': 'nueArCC_sns_yDir', 'nFiles': 40, 'nEventsPerFile': 10000 },
+                     'dirt': { 'label': 'NueArCCdirt', 'prefix': 'nueArCC_sns', 'nFiles': 40, 'nEventsPerFile': 10000 },
                      'HOG': { 'label': 'HOG', 'prefix': 'HOG', 'nFiles': 1, 'nEventsPerFile': 1 } }
     
     for iFile in range( sampleConfig[sample]['nFiles'] ):
