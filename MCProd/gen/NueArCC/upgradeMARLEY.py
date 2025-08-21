@@ -115,6 +115,35 @@ def xyzDirt( r, zmin, zmax, xIn, yIn, zIn, n):
     return vtxx, vtxy, vtxz
 # def xyzDirt
 
+def getNSamples(xmin, xmax, N):
+    return rng.uniform(xmin, xmax, N)
+# def getNSamples()
+
+def isAccepted(n, vPDF, maxPDF):
+    return rng.uniform(0., maxPDF, n) < vPDF
+# def isAccepted()
+
+def rejectSampling(PDF, tmin, tmax, nSamples):
+    outSamples = getNSamples(tmin, tmax, nSamples)
+    outSampleBins = np.floor(outSamples/10).astype(int)
+    outPDF = PDF[outSampleBins]
+    maxPDF = PDF.max()
+
+    mask = isAccepted(len(outSamples), outPDF, maxPDF)
+    reject, = np.where(~mask)
+
+    while reject.size > 0:
+        fill = getNSamples(tmin, tmax, reject.size)
+        fillBins = np.floor(fill/10).astype(int)
+        
+        fillPDF = PDF[fillBins]
+        mask = isAccepted(len(fill), fillPDF, maxPDF)
+        outSamples[reject[mask]] = fill[mask]
+        reject = reject[~mask]
+
+    return outSamples
+# def rejectSampling()
+
 if __name__ == "__main__":
 
     parser = argparse.ArgumentParser( description = 'signal or dirt nue-Ar CC samples; default on signal')
@@ -123,20 +152,24 @@ if __name__ == "__main__":
     
     args = parser.parse_args()
 
-    indir = '/Users/yuntse/data/coherent/SNeNDSens/NueArCC/marley'
-    outdir = '/Users/yuntse/data/coherent/SNeNDSens/NueArCC/marley_xyzt'
+    indir = '/Users/yuntse/data/coherent/SNeNDSens/gen/NueArCC/marley'
+    outdir = '/Users/yuntse/data/coherent/SNeNDSens/gen/NueArCC'
 
     if args.isSignal:
         print(f'Processing signal events...')
     else:
-        indir = '/Users/yuntse/data/coherent/SNeNDSens/NueArCCdirt/marley'
-        outdir = '/Users/yuntse/data/coherent/SNeNDSens/NueArCCdirt/marley_xyzt'
+        indir = '/Users/yuntse/data/coherent/SNeNDSens/gen/NueArCCdirt/marley'
+        outdir = '/Users/yuntse/data/coherent/SNeNDSens/gen/NueArCCdirt'
         print('Processing dirt events...')
 
     if os.path.exists(outdir):
-        raise FileExistsError(f"Output directory '{outdir}' already exists.")
+        # raise FileExistsError(f"Output directory '{outdir}' already exists.")
+        print(f"Output directory '{outdir}' already exists.")
     else:
         os.makedirs(outdir)
+
+    nuTime = np.load('/Users/yuntse/work/coherent/SNeNDSens/SNS/DelayedNeutrinosPer10ns.npy')
+
 
     # detector boundary
     ## signal volume
@@ -157,8 +190,8 @@ if __name__ == "__main__":
     for iFile in range(nFiles):
         firstEvtNo = nEventsPerFile*iFile
 
-        infile = f'{indir}/nueArCC_sns_yDir_{iFile:02d}.hepevt'
-        outfile = f'{outdir}/nueArCC_sns_yDir_{iFile:02d}.hepevt'
+        infile = f'{indir}/nueArCC_sns_{iFile:04d}.hepevt'
+        outfile = f'{outdir}/nueArCC_sns_{iFile:04d}.hepevt'
 
         # Set x, y, z
         if args.isSignal:
@@ -167,7 +200,9 @@ if __name__ == "__main__":
             x, y, z = xyzDirt( rOutlim, -zOutlim, zOutlim, xlim, ylim, zlim, nEventsPerFile)
 
         # Set t, currently all at 0
-        t = np.full(nEventsPerFile, 0)
+        # t = np.full(nEventsPerFile, 0)
+        rng = np.random.default_rng()
+        t = rejectSampling(nuTime, 0., 15000., nEventsPerFile)
 
         # Read in the events
         events = readHepevt(infile, firstEvtNo)

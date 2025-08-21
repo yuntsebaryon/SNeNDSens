@@ -4,9 +4,9 @@ import os
 
 if __name__ == "__main__":
 
-    outDir = '/Users/yuntse/data/coherent/SNeNDSens/gen/NueArCCdirt/marley'
+    outDir = '/Users/yuntse/data/coherent/SNeNDSens/gen/NueArCC/marley'
     jsonDir = f'{outDir}/json'
-    nFiles = 40
+    nFiles = 10
     nEvtsPerFile = 10000
 
     os.makedirs( jsonDir, exist_ok = True )
@@ -20,7 +20,7 @@ if __name__ == "__main__":
 f'''
 {{
   seed: {seed},
-  direction: {{ x: 0.0, y: 1.0, z: -0.24 }},
+  direction: {{ x: 0.0, y: 1.0, z: -0.337 }},
   target: {{
     nuclides: [ 1000180400 ],
     atom_fractions: [ 1.0 ],
