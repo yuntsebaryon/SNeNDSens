@@ -13,16 +13,16 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     sample = args.sample
-    sampleConfig = { 'signal': {'label': 'NueArCC', 'prefix': 'nueArCC_sns', 'nFiles': 10, 'nEventsPerFile': 10000 },
+    sampleConfig = { 'signal': {'label': 'NueArCC_Overlay', 'prefix': 'nueArCC_sns', 'nFiles': 10, 'nEventsPerFile': 10000 },
                      'cosmic': {'label': 'Cosmics', 'prefix': 'CosmicFlux', 'nFiles': 200, 'nEventsPerFile': 100000  },
-                     'BRN': { 'label': 'BRN', 'prefix': 'BRN', 'nFiles': 50, 'nEventsPerFile': 10000 },
-                     'dirt': { 'label': 'NueArCCdirt', 'prefix': 'nueArCC_sns', 'nFiles': 40, 'nEventsPerFile': 10000 },
-                     'HOG': { 'label': 'HOG', 'prefix': 'HOG', 'nFiles': 1, 'nEventsPerFile': 1 } }
+                     'BRN': { 'label': 'BRN_Overlay', 'prefix': 'BRN', 'nFiles': 50, 'nEventsPerFile': 10000 },
+                     'dirt': { 'label': 'NueArCCdirt_Overlay', 'prefix': 'nueArCC_sns', 'nFiles': 40, 'nEventsPerFile': 10000 },
+                     'HOG': { 'label': 'HOG', 'prefix': 'HOG', 'nFiles': 10, 'nEventsPerFile': 5000 } }
     
     gdml = '/Users/yuntse/work/coherent/SNeNDSens/MCProd/g4/gdml/COHAr250.gdml'
     
     # executable = '/Users/yuntse/opt/edep-sim/edep-gcc-17.0.0-arm64-apple-darwin24.5.0/bin/edep-sim'
-    executable = '/Users/yuntse/opt/edep-sim-origin/edep-gcc-17.0.0-arm64-apple-darwin24.5.0/bin/edep-sim'
+    executable = '/Users/yuntse/opt/edep-sim-origin/edep-gcc-17.0.0-arm64-apple-darwin25.1.0/bin/edep-sim'
 
     inDir = f'{args.dir}/gen/{sampleConfig[sample]['label']}'
     if not os.path.isdir( inDir ):
@@ -70,6 +70,10 @@ f'''
 
 /generator/kinematics/hepevt/input {infile}
 /generator/kinematics/hepevt/flavor marley
+
+## Set the counter of the vertices in an event
+/generator/count/set hepevt
+/generator/count/hepevt/input {infile}
 
 ## Distribute the events based on the vertex in the rooTracker file.
 /generator/position/set free
