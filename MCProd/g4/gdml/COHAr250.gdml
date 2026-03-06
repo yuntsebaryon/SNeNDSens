@@ -23,11 +23,16 @@
     <box name="WorldBox" x="1000.0" y="1000.0" z="1000.0" lunit="m" />
     <tube name = "LArTube" rmin="0" rmax="46" z="120" deltaphi="TWOPI" startphi="0" aunit="rad" lunit= "cm"/>
     <box name="LArBox" x="60.0" y="50.0" z="60.0" lunit="cm" />
+    <tube name="CryoWall46" rmin="46" rmax="46.2" z="120.2" deltaphi="TWOPI" startphi="0" aunit="rad" lunit= "cm"/>
+    <tube name="CryoWall48" rmin="47.96" rmax="48.26" z="134.62" deltaphi="TWOPI" startphi="0" aunit="rad" lunit= "cm"/>
+    <tube name="CryoThickPlate" rmin="0" rmax="48.26" z="2.54" deltaphi="TWOPI" startphi="0" aunit="rad" lunit= "cm"/>
+    <tube name="CryoPlate46" rmin="0" rmax="46" z="0.2" deltaphi="TWOPI" startphi="0" aunit="rad" lunit= "cm"/>
+    <tube name="CryoPlate48" rmin="0" rmax="47.96" z="0.3" deltaphi="TWOPI" startphi="0" aunit="rad" lunit= "cm"/>
     <box name="OverburdenBlock" x="20.0" y="20.0" z="4.4" lunit="m" />
     <box name="WallBlock" x="20.0" y="2.0" z="3.24" lunit="m" />
-    <box name="CRTz" x="107.0" y="107.0" z="3.0" lunit="cm" />
-    <box name="CRTy" x="100.0" y="3.0" z="122.0" lunit="cm" />
-    <box name="CRTx" x="3.0" y="100.0" z="122.0" lunit="cm" />
+    <box name="CRTz" x="116.0" y="116.0" z="3.0" lunit="cm" />
+    <box name="CRTy" x="110.0" y="3.0" z="144.0" lunit="cm" />
+    <box name="CRTx" x="3.0" y="110.0" z="144.0" lunit="cm" />
     <tube name = "LeadTube" rmin="10.2" rmax="12.7" z="1000" deltaphi="TWOPI" startphi="0" aunit="rad" lunit= "cm"/>
   </solids>
   <structure>
@@ -36,6 +41,26 @@
       <solidref ref="LArBox"/>
       <auxiliary auxtype="SensDet" auxvalue="LArTPC"/>
       <auxiliary auxtype="EField" auxvalue="(500.0 V/cm, 0.0 V/cm, 0.0 V/cm)"/>
+    </volume>
+    <volume name="CryoInnerWall">
+      <materialref ref="G4_STAINLESS-STEEL"/>
+      <solidref ref="CryoWall46"/>
+    </volume>
+    <volume name="CryoOuterWall">
+      <materialref ref="G4_STAINLESS-STEEL"/>
+      <solidref ref="CryoWall48"/>
+    </volume>
+    <volume name="CryoTopPlate">
+      <materialref ref="G4_STAINLESS-STEEL"/>
+      <solidref ref="CryoThickPlate"/>
+    </volume>
+    <volume name="CryoInnerBottom">
+      <materialref ref="G4_STAINLESS-STEEL"/>
+      <solidref ref="CryoPlate46"/>
+    </volume>
+    <volume name="CryoOuterBottom">
+      <materialref ref="G4_STAINLESS-STEEL"/>
+      <solidref ref="CryoPlate48"/>
     </volume>
     <volume name="Overburden">
       <materialref ref="G4_CONCRETE"/>
@@ -105,58 +130,83 @@
         <rotationref ref="identity"/>
       </physvol>
       <physvol copynumber="0">
+        <volumeref ref="CryoInnerWall"/>
+        <position unit="cm" x="0." y="0." z="-0.1"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol copynumber="0">
+        <volumeref ref="CryoOuterWall"/>
+        <position unit="cm" x="0." y="0." z="-74.62"/>
+        <rotationref ref="identify"/>
+      </physvol>
+      <physvol copynumber="0">
+        <volumeref ref="CryoTopPlate"/>
+        <position unit="cm" x="0." y="0." z="61.27"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol copynumber="0">
+        <volumeref ref="CryoInnerBottom"/>
+        <position unit="cm" x="0." y="0." z="-60.1"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol copynumber="0">
+        <volumeref ref="CryoOuterBottom"/>
+        <position unit="cm" x="0." y="0." z="-73.12"/>
+        <rotationref ref="identity"/>
+      </physvol>
+      <physvol copynumber="0">
         <volumeref ref="Overburden"/>
-        <position unit="m" x="0." y="0." z="4.77"/>
+        <position unit="m" x="0." y="0." z="4.61"/>
         <rotationref ref="identity"/>
       </physvol>
       <physvol copynumber="0">
         <volumeref ref="Floor"/>
-        <position unit="cm" x="0." y="0." z="-287."/>
+        <position unit="cm" x="0." y="0." z="-303."/>
         <rotationref ref="identity"/>
       </physvol>
       <physvol copynumber="0">
         <volumeref ref="WallDownstream"/>
-        <position unit="cm" x="0." y="378." z="95."/>
+        <position unit="cm" x="0." y="378." z="79."/>
         <rotationref ref="identity"/>
       </physvol>
       <physvol copynumber="0">
         <volumeref ref="WallUpstream"/>
-        <position unit="cm" x="0." y="-155." z="95."/>
+        <position unit="cm" x="0." y="-155." z="79."/>
         <rotationref ref="identity"/>
       </physvol>
       <physvol copynumber="0">
         <volumeref ref="CRTtop"/>
-        <position unit="cm" x="0." y="0." z="64."/>
+        <position unit="cm" x="0." y="0." z="68."/>
         <rotationref ref="identity"/>
       </physvol>
       <physvol copynumber="0">
         <volumeref ref="CRTbottom"/>
-        <position unit="cm" x="0." y="0." z="-64."/>
+        <position unit="cm" x="0." y="0." z="-80."/>
         <rotationref ref="identity"/>
       </physvol>
       <physvol copynumber="0">
         <volumeref ref="CRTfront"/>
-        <position unit="cm" x="0." y="-52." z="0."/>
+        <position unit="cm" x="0." y="-56.5" z="-6."/>
         <rotationref ref="identity"/>
       </physvol>
       <physvol copynumber="0">
         <volumeref ref="CRTback"/>
-        <position unit="cm" x="0." y="52." z="0."/>
+        <position unit="cm" x="0." y="56.5" z="-6."/>
         <rotationref ref="identity"/>
       </physvol>
       <physvol copynumber="0">
         <volumeref ref="CRTright"/>
-        <position unit="cm" x="52." y="0." z="0."/>
+        <position unit="cm" x="56.5" y="0." z="-6."/>
         <rotationref ref="identity"/>
       </physvol>
       <physvol copynumber="0">
         <volumeref ref="CRTleft"/>
-        <position unit="cm" x="-52." y="0." z="0."/>
+        <position unit="cm" x="-56.5" y="0." z="-6."/>
         <rotationref ref="identity"/>
       </physvol>
       <physvol copynumber="0">
         <volumeref ref="HOGTube"/>
-        <position unit="cm" x="0." y="182.5" z="146."/>
+        <position unit="cm" x="0." y="182.5" z="130."/>
         <rotationref ref="rotate90Y"/>
       </physvol>
     </volume>
