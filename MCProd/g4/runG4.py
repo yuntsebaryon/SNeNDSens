@@ -6,21 +6,21 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser( description = 'Process GEANT4 simulation using edep-sim.' )
 
     parser.add_argument('--sample', type = str, required = True, 
-                        choices = ['signal', 'cosmic', 'BRN', 'dirt', 'HOG'],
-                        help = 'Sample types: signal, dirt, cosmic, BRN, HOG')
+                        choices = ['signal', 'cosmic', 'BRN', 'outside', 'HOG'],
+                        help = 'Sample types: signal, outside, cosmic, BRN, HOG')
     parser.add_argument('--dir', type = str, required = True, help = 'directory of input and output files')
 
     args = parser.parse_args()
 
     sample = args.sample
-    sampleConfig = { 'signal': {'label': 'NueArCC_Overlay', 'prefix': 'nueArCC_sns', 'nFiles': 10, 'nEventsPerFile': 10000 },
-                     'cosmic': {'label': 'Cosmics', 'prefix': 'CosmicFlux', 'nFiles': 200, 'nEventsPerFile': 100000  },
-                     'BRN': { 'label': 'BRN_Overlay', 'prefix': 'BRN', 'nFiles': 50, 'nEventsPerFile': 10000 },
-                     'dirt': { 'label': 'NueArCCdirt_Overlay', 'prefix': 'nueArCC_sns', 'nFiles': 40, 'nEventsPerFile': 10000 },
+    sampleConfig = { 'signal': {'label': 'NueArCC', 'prefix': 'nueArCC_sns', 'nFiles': 10, 'nEventsPerFile': 10000 },
+                     'cosmic': {'label': 'Cosmics', 'prefix': 'CosmicFlux', 'nFiles': 500, 'nEventsPerFile': 100000  },
+                     'BRN': { 'label': 'BRN', 'prefix': 'BRN', 'nFiles': 80, 'nEventsPerFile': 10000 },
+                     'outside': { 'label': 'NueArCCoutside', 'prefix': 'nueArCC_sns', 'nFiles': 40, 'nEventsPerFile': 10000 },
                      'HOG': { 'label': 'HOG', 'prefix': 'HOG', 'nFiles': 10, 'nEventsPerFile': 10000 } }
     
-    # gdml = '/Users/yuntse/work/coherent/SNeNDSens/MCProd/g4/gdml/COHAr250.gdml'
-    gdml = '/Users/yuntse/work/coherent/SNeNDSens/MCProd/g4/gdml/COHAr250_noHOGPbPipe.gdml'
+    gdml = '/Users/yuntse/work/coherent/SNeNDSens/MCProd/g4/gdml/COHAr250.gdml'
+    # gdml = '/Users/yuntse/work/coherent/SNeNDSens/MCProd/g4/gdml/COHAr250_noHOGPbPipe.gdml'
     
     # executable = '/Users/yuntse/opt/edep-sim/edep-gcc-17.0.0-arm64-apple-darwin24.5.0/bin/edep-sim'
     executable = '/Users/yuntse/opt/edep-sim-origin/edep-gcc-17.0.0-arm64-apple-darwin25.1.0/bin/edep-sim'
@@ -30,7 +30,7 @@ if __name__ == "__main__":
         raise FileNotFoundError(f"Input directory '{inDir}' does not exist")
 
     # outDir = f'{args.dir}/g4/{sampleConfig[sample]['label']}'
-    outDir = f'{args.dir}/g4/{sampleConfig[sample]['label']}_noHOGPbPipe'
+    outDir = f'{args.dir}/g4/{sampleConfig[sample]['label']}'
     if os.path.exists( outDir ):
         raise FileExistsError(f"Output directory '{outDir}' already exists.")
     else:

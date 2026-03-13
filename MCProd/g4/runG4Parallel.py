@@ -10,27 +10,27 @@ def runEdepSim(iBatch):
     sampleDir = '/Users/yuntse/data/coherent/SNeNDSens'
     label = 'Cosmics'
     prefix = 'CosmicFlux'
-    nFiles = 200
+    nFiles = 10
     nEventsPerFile = 100000
 
     ## General location
     gdml = '/Users/yuntse/work/coherent/SNeNDSens/MCProd/g4/gdml/COHAr250.gdml'
     
     # executable = '/Users/yuntse/opt/edep-sim/edep-gcc-17.0.0-arm64-apple-darwin24.5.0/bin/edep-sim'
-    executable = '/Users/yuntse/opt/edep-sim-origin/edep-gcc-17.0.0-arm64-apple-darwin24.5.0/bin/edep-sim'
+    executable = '/Users/yuntse/opt/edep-sim-origin/edep-gcc-17.0.0-arm64-apple-darwin25.1.0/bin/edep-sim'
 
-    inDir = f'{sampleDir}/gen/{label}/{(iBatch+1)*nFiles:04d}'
+    inDir = f'{sampleDir}/gen/{label}/{iBatch*nFiles:04d}'
     if not os.path.isdir( inDir ):
         raise FileNotFoundError(f"Input directory '{inDir}' does not exist")
 
-    outDir = f'{sampleDir}/g4/{label}/{(iBatch+1)*nFiles:04d}'
+    outDir = f'{sampleDir}/g4/{label}/{iBatch*nFiles:04d}'
     if os.path.exists( outDir ):
         raise FileExistsError(f"Output directory '{outDir}' already exists.")
     else:
         os.makedirs( f'{outDir}/mac')
 
     for iFile in range( nFiles ):
-        jFile = (iBatch+1)*nFiles + iFile
+        jFile = iBatch*nFiles + iFile
         macfile = f'{outDir}/mac/{prefix}_g4_{jFile:04d}.mac'
         infile = f'{inDir}/{prefix}_{jFile:04d}.hepevt'
         outfile = f'{outDir}/{prefix}_g4_{jFile:04d}.root'
@@ -65,6 +65,10 @@ f'''
 /generator/kinematics/hepevt/input {infile}
 /generator/kinematics/hepevt/flavor marley
 
+## Set the counter of the vertices in an event
+/generator/count/set hepevt
+/generator/count/hepevt/input {infile}
+
 ## Distribute the events based on the vertex in the rooTracker file.
 /generator/position/set free
 
@@ -90,7 +94,8 @@ f'''
 
 if __name__ == "__main__":
 
-    nBatches = [ 0, 1, 2, 3, 4 ]
+    # nBatches = [ 0, 1, 2, 3, 4 ]
+    nBatches = list( range(12) )
 
     # Run in parallel
     with ProcessPoolExecutor() as executor:
