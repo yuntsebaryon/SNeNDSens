@@ -136,8 +136,8 @@
       </physvol>
       <physvol copynumber="0">
         <volumeref ref="CryoOuterWall"/>
-        <position unit="cm" x="0." y="0." z="-74.62"/>
-        <rotationref ref="identify"/>
+        <position unit="cm" x="0." y="0." z="-7.31"/>
+        <rotationref ref="identity"/>
       </physvol>
       <physvol copynumber="0">
         <volumeref ref="CryoTopPlate"/>
@@ -166,12 +166,12 @@
       </physvol>
       <physvol copynumber="0">
         <volumeref ref="WallDownstream"/>
-        <position unit="cm" x="0." y="378." z="79."/>
+        <position unit="cm" x="0." y="373." z="79."/>
         <rotationref ref="identity"/>
       </physvol>
       <physvol copynumber="0">
         <volumeref ref="WallUpstream"/>
-        <position unit="cm" x="0." y="-155." z="79."/>
+        <position unit="cm" x="0." y="-160." z="79."/>
         <rotationref ref="identity"/>
       </physvol>
       <physvol copynumber="0">
@@ -206,7 +206,7 @@
       </physvol>
       <physvol copynumber="0">
         <volumeref ref="HOGTube"/>
-        <position unit="cm" x="0." y="182.5" z="130."/>
+        <position unit="cm" x="0." y="177.5" z="130."/>
         <rotationref ref="rotate90Y"/>
       </physvol>
     </volume>
