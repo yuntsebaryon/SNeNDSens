@@ -44,6 +44,17 @@ May try to disable the `BUILD_CAPTAIN` with the flag below (TPC): \
    python dumpTree.py <input.root> <output.h5> True
 ```
 
+### Cosmic muon sample generation
+
+__Update: 2026.3.12__
+
+We used the code in `MCProd/gen/Cosmics/`, but now switched to [EcoMug](https://github.com/dr4kan/EcoMug).
+The code can be found at [my forked EcoMug github](https://github.com/yuntsebaryon/EcoMug).
+Currently it is hardcoded.  Compile and run
+```shell
+   g++ COHAr250_gen.cpp -o COHAr250_gen
+   ./COHAr250_gen
+```
 
 ## Install the packages
 
