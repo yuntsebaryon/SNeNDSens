@@ -1,7 +1,7 @@
 Meeting
 =======
 
-### COHERENT Analysis: 2025.8.28
+## COHERENT Analysis: 2025.8.28
 
 - Sam: What is between the signal volume and the CR veto? My concern is accidentally vetoing signal events without high z shielding between the Ar and veto
   Could also use CRY for simulating cosmic muons/neutrons, which includes angle/energy dependence as well as latitude, date, …
@@ -14,3 +14,21 @@ Meeting
 - Yun-Tse: I did 10x10m^2 in my old analysis and assumed that we can easily rejected muons leaving a track > 5cm in the TPC.  The acceptance is so low and therefore I reduced the generation plane this time.  But you are right, we should expand it in the next production.  John is planning to continue this analysis in a slower pace during the school year, which allows us some time to run this big MC production 
 
 - Janina: Do you have a lower muon energy threshold above which you can reject most of them?
+
+-----------------------------------------------------------------------------------------------
+
+## Collaboration Meeting: 2025.11.14
+
+- Cosmic rays
+  - Larger area
+  - ORNL height: 279m
+  - Other generators: consider the effort and resource
+- Shielding between the LAr and CRT
+  - prevents neutrinos from arriving the CRT, helping the CRT veto
+  - Pb?  asking around
+- Hot-off-gas
+  - “The collaboration is deploying 2” thick lead shielding around the HOG pipe to reduce the impact of this background, which will improve our future measurements.”
+  - Pipe of HOG: 3-cm radius
+  - overall scale
+  - source distribution (line source?)
+  - direction and energy (500 keV?)
