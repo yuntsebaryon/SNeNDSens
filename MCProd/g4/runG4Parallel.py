@@ -94,11 +94,13 @@ f'''
 
 if __name__ == "__main__":
 
-    # nBatches = [ 0, 1, 2, 3, 4 ]
-    nBatches = list( range(12) )
+    for i in range(1, 10):
+        # nBatches = [ 0, 1, 2, 3, 4 ]
+        nStart = 12*i
+        nBatches = list( range( nStart, nStart+12) )
 
-    # Run in parallel
-    with ProcessPoolExecutor() as executor:
-        list(executor.map(runEdepSim, nBatches))
+        # Run in parallel
+        with ProcessPoolExecutor() as executor:
+            list(executor.map(runEdepSim, nBatches))
 
     
