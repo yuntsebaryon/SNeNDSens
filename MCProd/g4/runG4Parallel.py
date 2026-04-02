@@ -10,14 +10,14 @@ def runEdepSim(iBatch):
     sampleDir = '/Users/yuntse/data/coherent/SNeNDSens'
     label = 'Cosmics'
     prefix = 'CosmicFlux'
-    nFiles = 10
+    nFiles = 100
     nEventsPerFile = 100000
 
     ## General location
     gdml = '/Users/yuntse/work/coherent/SNeNDSens/MCProd/g4/gdml/COHAr250.gdml'
     
     # executable = '/Users/yuntse/opt/edep-sim/edep-gcc-17.0.0-arm64-apple-darwin24.5.0/bin/edep-sim'
-    executable = '/Users/yuntse/opt/edep-sim-origin/edep-gcc-17.0.0-arm64-apple-darwin25.1.0/bin/edep-sim'
+    executable = '/Users/yuntse/opt/edep-sim-origin/edep-gcc-21.0.0-arm64-apple-darwin25.3.0/bin/edep-sim'
 
     inDir = f'{sampleDir}/gen/{label}/{iBatch*nFiles:04d}'
     if not os.path.isdir( inDir ):
@@ -94,7 +94,7 @@ f'''
 
 if __name__ == "__main__":
 
-    for i in range(1, 10):
+    for i in range(0, 1):
         # nBatches = [ 0, 1, 2, 3, 4 ]
         nStart = 12*i
         nBatches = list( range( nStart, nStart+12) )
