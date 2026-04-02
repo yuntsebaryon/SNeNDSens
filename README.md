@@ -6,6 +6,8 @@ SNeND Sensitivity
 - `MCProd`: produce the MC samples
     - `gen`: scripts producing the events at the level of primary particles
     - `g4`: scripts running `edep-sim` (a GEANT4 wrapper)
+- `Validation`: scripts/notebooks to validate the output samples (make plots, etc.)
+- `SNS`: data and script to make the time distributions of the SNS neutrinos
 
 ## Environment setups
 
@@ -20,17 +22,33 @@ Run MARLEY in the marley build directory,
    python /Users/yuntse/work/coherent/SNeNDSens/MCProd/gen/NueArCC/runMARLEY.py
 ```
 
+### Cosmic muon sample generation
+
+__Update: 2026.3.12__
+
+We used the code in `MCProd/gen/Cosmics/`, but now switched to [EcoMug](https://github.com/dr4kan/EcoMug).
+The code can be found at [my forked EcoMug github](https://github.com/yuntsebaryon/EcoMug).
+Currently it is hardcoded.  Compile and run
+```shell
+   g++ COHAr250_gen.cpp -o COHAr250_gen.out
+   ./COHAr250_gen.out
+```
 
 ### Edep-sim
 
 ```shell
-   source /Users/yuntse/opt/root-v6.36.00/bin/thisroot.sh
+   source /Users/yuntse/opt/root-v6.36.10/bin/thisroot.sh
    source /Users/yuntse/opt/geant4-v10.7.4/bin/geant4.sh
-   cd source/edep-sim
+   cd source/edep-sim-origin
    source setup.sh
-   export CMAKE_PREFIX_PATH=/Users/yuntse/opt/edep-sim/${EDEP_TARGET}
+   export CMAKE_PREFIX_PATH=/Users/yuntse/opt/edep-sim-origin/${EDEP_TARGET}
    cd /Users/yuntse/work/coherent/SNeNDSens/MCProd/g4
    python runG4.py --sample BRN --dir /Users/yuntse/data/coherent/SNeNDSens
+```
+
+Run cosmic muon samples: 12 parallel threads
+```shell
+   python runG4Parallel.py
 ```
 
 May try to disable the `BUILD_CAPTAIN` with the flag below (TPC): \
@@ -44,17 +62,7 @@ May try to disable the `BUILD_CAPTAIN` with the flag below (TPC): \
    python dumpTree.py <input.root> <output.h5> True
 ```
 
-### Cosmic muon sample generation
-
-__Update: 2026.3.12__
-
-We used the code in `MCProd/gen/Cosmics/`, but now switched to [EcoMug](https://github.com/dr4kan/EcoMug).
-The code can be found at [my forked EcoMug github](https://github.com/yuntsebaryon/EcoMug).
-Currently it is hardcoded.  Compile and run
-```shell
-   g++ COHAr250_gen.cpp -o COHAr250_gen
-   ./COHAr250_gen
-```
+-----------------------------------------------------------------------------------------------------
 
 ## Install the packages
 
