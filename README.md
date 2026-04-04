@@ -57,8 +57,8 @@ May try to disable the `BUILD_CAPTAIN` with the flag below (TPC): \
 ### Dump the edep-sim output to a h5 file
 
 ```shell
-   source /Users/yuntse/opt/root-v6.36.00/bin/thisroot.sh
-   export LD_LIBRARY_PATH="/Users/yuntse/opt/edep-sim/edep-gcc-17.0.0-arm64-apple-darwin24.5.0/lib:/Users/yuntse/opt/root-v6.36.00/lib"
+   source /Users/yuntse/opt/root-v6.36.10/bin/thisroot.sh
+   export LD_LIBRARY_PATH="/Users/yuntse/opt/edep-sim-origin/edep-gcc-21.0.0-arm64-apple-darwin25.3.0/lib:/Users/yuntse/opt/root-v6.36.10/lib"
    python dumpTree.py <input.root> <output.h5> True
 ```
 
