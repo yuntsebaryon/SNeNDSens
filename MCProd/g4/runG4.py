@@ -23,7 +23,7 @@ if __name__ == "__main__":
     # gdml = '/Users/yuntse/work/coherent/SNeNDSens/MCProd/g4/gdml/COHAr250_noHOGPbPipe.gdml'
     
     # executable = '/Users/yuntse/opt/edep-sim/edep-gcc-17.0.0-arm64-apple-darwin24.5.0/bin/edep-sim'
-    executable = '/Users/yuntse/opt/edep-sim-origin/edep-gcc-17.0.0-arm64-apple-darwin25.1.0/bin/edep-sim'
+    executable = '/Users/yuntse/opt/edep-sim-origin/edep-gcc-21.0.0-arm64-apple-darwin25.3.0/bin/edep-sim'
 
     inDir = f'{args.dir}/gen/{sampleConfig[sample]['label']}'
     if not os.path.isdir( inDir ):
